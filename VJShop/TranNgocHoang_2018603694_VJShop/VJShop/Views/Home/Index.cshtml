@@ -1,0 +1,75 @@
+﻿@model IEnumerable<VJShop.Areas.Admin.Models.MAYANH>
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    h1 {
+        color: black;
+        margin-top: 20px;
+        text-align: left;
+        margin-left: 110px;
+    }
+
+    #abc {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    li:hover{
+        background-color: greenyellow;
+    }
+    
+</style>
+
+
+<br />
+<div><img id="abc" src="~/Content/image/abc.jpg" /></div>
+<br />
+<div><img id="abc" src="~/Content/image/main123.JPG" /></div>
+<br />
+<img id="abc" src="~/Content/image/anh.JPG" />
+
+<br />
+<ul style="list-style: none; display: flex;flex-wrap:wrap;margin-left:140px;">
+    
+
+    @foreach (var item in Model)
+    {
+
+    <li style="margin: 10px; width: 300px; border: groove; border-radius:15px">
+        <a>
+            <img src="~/Content/image/new-icon.gif" alt="" style="width:50px;height:50px;float:left">
+            <img src="~/Content/image/khuyenmai.gif" alt="" style="width:70px;height:70px;float:right">
+        </a>
+        <div>
+            <a href="@Url.Action("ChiTietMayAnh","Home",new { id = item.MaAnh.Trim() })" style="text-decoration:none">
+                @{
+                    string ImagePath = "~/Content/image/" + item.AnhDaiDien;
+                }
+                <img src="@Url.Content(ImagePath)" class="img-thumbnail" style="margin-left:50px;width:200px;height:200px" />
+            </a>
+        </div>
+        <br />
+        <div style="font-size:20px;text-align:center;margin-top:5px;background-color:yellow">
+            <a href="@Url.Action("ChiTietMayAnh","Home",new { id = item.MaAnh.Trim() })" style="text-decoration:none">
+                @Html.DisplayFor(modelItem => item.TieuDe)
+            </a>
+        </div>
+        <div style="text-align:center;font-size:20px;background-color:yellow">
+            <span>Giá:</span>
+            @Html.DisplayFor(modelItem => item.GiaBan)đ
+        </div>
+        <div >
+            <img src="~/Content/image/sao.jpg" style="width:100px;height:50px;margin-left:100px"/>
+        </div>
+        <br />
+
+    </li>
+
+
+
+
+
+    }
+
+</ul>

@@ -1,0 +1,149 @@
+﻿@model IEnumerable<VJShop.Areas.Admin.Models.MAYANH>
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    h1 {
+        color: black;
+        margin-top: 20px;
+        text-align: left;
+        margin-left: 110px;
+    }
+
+    #abc {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+
+
+<br />
+<div><img id="abc" src="~/Content/image/abc.jpg" /></div>
+<br />
+<div><img id="abc" src="~/Content/image/main123.JPG" /></div>
+<br />
+<img id="abc" src="~/Content/image/anh.JPG" />
+
+<br />
+
+<ul style="list-style: none; display: flex;flex-wrap:wrap;margin-left:140px;float:left;">
+
+    @foreach (var item in Model)
+    {
+    <li style=" width: auto;margin-bottom:30px">
+        <a>
+            <img src="~/Content/image/new-icon.gif" alt="" style="width:100px;height:100px;float:left">
+            <img src="~/Content/image/khuyenmai.gif" alt="" style="width:100px;height:100px;float:right;margin-right:20px">
+        </a>
+        <div>
+            <a style="text-decoration:none">
+                @{
+                    string ImagePath = "~/Content/image/" + item.AnhDaiDien;
+                }
+                <img src="@Url.Content(ImagePath)" class="img-thumbnail" style="width:500px;height:500px" />
+            </a>
+        </div>
+        <br />
+    </li>
+    }
+</ul>
+<ul style="list-style: none; display: flex;flex-wrap:wrap;margin-left:20px;float:left;">
+    @foreach (var item in Model)
+    {
+    <li style=" width: auto">
+        <div style="font-size:20px;">
+            <a style="text-decoration:none;font-size:30px">
+                @Html.DisplayFor(modelItem => item.TieuDe)
+
+            </a>
+        </div>
+        <div style="font-size:40px;color:cyan">
+            <span>Giá:</span>
+            @Html.DisplayFor(modelItem => item.GiaBan)đ
+        </div>
+
+
+        <br />
+        @if (item.SoLuong > 0)
+        {
+            <div style="font-size:20px;color:blue">Tình trạng: còn hàng</div>
+        }
+        else
+        {
+            <div style="font-size:20px;color:blue">Tình trạng: hết hàng</div>
+        }
+        <br />
+        <div>
+            <a>
+                <h3 style="color: blue;">Mô tả</h3>
+            </a>
+        </div>
+        <div style="font-size: 15px; padding-top: 5px;width:700px; margin-bottom:10px ">
+            @Html.DisplayFor(modelItem => item.MoTa)
+        </div>
+        <div>
+
+            <a><h3 style="color: blue; ">Bảo hành:</h3>24 tháng chính hãng</a>
+
+        </div>
+        <div>
+
+            <a>
+                <h3 style="color: blue; margin-top: 10px;">
+                    Phụ kiện đi kèm:
+                </h3>Thân máy, ống kính 18-55STM, Pin, Sạc, Dây đeo, Cáp USB, Hộp, Sách, Dĩa
+            </a>
+
+        </div>
+
+        <div>
+            <h3 style="color: blue; margin-top: 10px;">Ưu đãi thêm khi mua hàng tại VJShop</h3>
+        </div>
+        <div>- Tặng thẻ nhớ SD 16gb</div>
+        <div>
+            - Tặng túi máy ảnh Canon
+        </div>
+        <div>
+            - Miễn phí dán màn hình trọn đời
+        </div>
+        <div>
+            - Miễn phí vệ sinh ngoài máy & Lens định kỳ trọn đời
+        </div>
+        <div>
+            - Miễn phí vệ sinh lau Sensor, gương trọn đời
+
+        </div>
+        <div>
+            - Miễn phí Khử nấm mốc bằng UV pro trọn đời
+
+        </div>
+        <div>
+            - Hướng dẫn chụp ảnh cho người mới bắt đầu bạn sẽ làm chủ được chiếc máy ảnh ngay sau khi mua máy
+        </div>
+        <div>
+            <h3 style="color:blue;margin-top:10px;">
+                Chính sách hỗ trợ sau bán hàng
+            </h3>
+        </div>
+        <div>
+            - Đổi trả 07 ngày đầu nếu lỗi kỹ thuật.
+        </div>
+        <div>
+            - Miễn phí vệ sinh máy, khử nấm mốc, lau sensor, bảo trì máy sau mua hàng
+        </div>
+        <div>
+            - Miễn phí dán màn hình trọn đời máy
+        </div>
+        <div>
+            - Hỗ trợ miễn phí cân chỉnh Focus các dòng Lens Sigma Art
+        </div>
+        <div>
+            - Hỗ trợ thu mua lại Máy ảnh & Lens khi muốn nâng cấp hoặc bán lại với giá tốt nhất
+        </div>
+        <button style="width:150px;height:40px;background-color:yellow;margin-top:20px">Thêm vào giỏ hàng</button>
+        <button style="width:100px;height:40px;background-color:yellow;margin-top:20px;margin-left:30px;margin-bottom:20px">Mua hàng</button>
+
+    </li>
+    }
+</ul>

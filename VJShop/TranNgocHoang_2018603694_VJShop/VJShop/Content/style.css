@@ -1,0 +1,86 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+#container {
+    height: auto;
+    width: 100%;
+}
+
+.header {
+    height: 100px;
+    width: 100%;
+    background-color: white;
+}
+
+    .header .anh1 img {
+        height: 100px;
+        width: auto;
+        float: left;        
+    }
+
+    /*.header .gmail img {
+        height: 20px;
+        width: 20px;
+        float: left;
+        margin-top: 70px;
+        margin-left: 20px;
+    }*/
+
+    .header .chugmail {
+        float: left;
+        margin-top: 70px;
+        margin-left: 10px;
+    }
+
+    
+
+    .header .chuphone {
+        float: left;
+        margin-top: 70px;
+        margin-left: 10px;
+    }
+
+    
+
+/*nav {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background-color: gainsboro;
+}
+
+    nav ul li {
+        display: inline-block;
+        border-right: thin solid gainsboro;
+    }
+
+        nav ul li a {
+            text-decoration: underline;
+            color: blue;
+            padding: 0px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        nav ul li:last-child {
+            border-right: none;
+        }
+
+        nav ul li:hover {
+            background-color: yellowgreen;
+        }*/
+
+.main {
+    height: 550px;
+    width: 100%;
+}
+
+.footer {
+    background-color: lightgray;
+    height: 50px;
+    width: 100%;
+}
+    

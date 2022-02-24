@@ -1,0 +1,98 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+<style>
+    body {
+        background-color: aquamarine;
+    }
+
+    h1 {
+        color: #009999;
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+
+    form {
+        width: 100%;
+        max-width: 400px;
+        margin: 20px auto;
+        background-color: #ffffff;
+        padding: 15px;
+        border: 2px solid #cccccc;
+        border-radius: 10px;
+    }
+
+    button {
+        padding: 7.5px 15px;
+        border-radius: 2px;
+        background-color: #009999;
+        color: #ffffff;
+        border: none;
+        outline: none;
+    }
+
+    input {
+        padding: 7.5px 15px;
+        width: 200px;
+        border: 1px solid #cccccc;
+        outline: none;
+    }
+
+    .admindn h1 {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 50px;
+    }
+</style>
+<div class="admindn"><h1>Đăng nhập Admin</h1></div>
+<form action="" method="post">
+    <h1>Đăng nhập</h1>
+    <label>Username: </label>
+    <input type="text" id="username" placeholder="Nhập username" />
+    <br />
+    <br />
+    <label>Password : </label>
+    <input type="password" id="password" placeholder="Nhập password" />
+    <br />
+    <br />
+    <br>
+    <button id="submit" style="margin-left:30px">Đăng nhập</button>
+    <div style="height: 30px; width: 95px; background-color: #009999; border-radius:1px;margin-left:30px;margin-top:10px;text-align:center;line-height:30px">
+        <a href="~/Home/Index" style="text-decoration: none; color: white;">Hủy bỏ</a>
+    </div>
+    
+    <br />
+
+    <div id="msg"></div>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script>
+    $(document).ready(function () {
+        $("#submit").click(function (e) {
+            if ($("#username").val() == "") {
+                $("#msg").html("Username cannot empty");
+            }
+            else {
+                $.ajax({
+                    type: "POST",
+                    url: "/Admin/Admin/Login",
+                    contentType: "application/json; charset=utf-8",
+                    data: '{"username":"' + $("#username").val() + '","password":"' + $("#password").val() + '"}',
+                    dataType: 'html',
+                    success: function (response) {
+                        $("#msg").html(response);
+                        if (response == "Login...") {
+                            window.location.href = "@Url.Action("Index", "GiaoDienQuanTri")";
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        $("#msg").html("ERROR: status = " + status + ",error ="
+                            + error + ", xhr = " + xhr.status + " - " + xhr.statusText)
+                    }
+                });
+            }
+            return false;
+        });
+    });
+    </script>
+</form>

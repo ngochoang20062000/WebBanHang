@@ -1,0 +1,70 @@
+﻿@model VJShop.Areas.Admin.Models.MAYANH
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Xóa máy ảnh</h2>
+
+<h3>Bạn có chắc chắn muốn xóa máy ảnh này không?</h3>
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        
+
+        <dt>
+            Tiêu đề
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TieuDe)
+        </dd>
+
+        <dt>
+            Ảnh đại diện
+        </dt>
+
+        <dd>
+            @{
+                string ImagePath = "~/Content/image/" + Model.AnhDaiDien;
+            }
+            <img src="@Url.Content(ImagePath)" width="50" class="img-thumbnail" />
+            <br />
+        </dd>
+
+        <dt>
+           Giá bán
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaBan)
+        </dd>
+
+        <dt>
+            Số lượng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuong)
+        </dd>
+
+        <dt>
+            Mô tả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Đồng ý" class="btn btn-default" onclick="return confirm('Bạn có muốn xóa không')" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

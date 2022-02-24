@@ -1,0 +1,107 @@
+﻿@model IEnumerable<VJShop.Areas.Admin.Models.MAYANH>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    th {
+        width: 70px;
+        font: bold;
+    }
+
+    tr td {
+        width: 170px;
+        text-align: center;
+    }
+
+    table, th, td {
+        border: 1px solid pink;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+</style>
+
+    @if (Model != null)
+    {
+        <h2>Bảo trì máy ảnh</h2>
+        <br />
+        <p>
+            <button>@Html.ActionLink("Thêm mới", "Create")</button>
+        </p>
+        <br />
+        <table class="table" border="1">
+            <tr>
+
+                <th>
+                    <center>Tiêu đề</center>
+                </th>
+                <th>
+                    <center>Ảnh đại diện</center>
+                </th>
+                <th>
+                    <center>Giá bán</center>
+                </th>
+                <th>
+                    <center>Số lượng</center>
+                </th>
+                <th>
+                    <center>Mô tả</center>
+                </th>
+                <th>
+                    <center>Chức năng</center>
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+
+
+                    <td style="width:162px">
+                        @Html.DisplayFor(modelItem => item.TieuDe)
+                    </td>
+                    <td style="width:162px">
+                        @{
+                            string ImagePath = "~/Content/image/" + item.AnhDaiDien;
+                        }
+                        <img src="@Url.Content(ImagePath)" width="50" class="img-thumbnail" />
+                        <br />
+
+                    </td>
+                    <td style="width:162px">
+                        @Html.DisplayFor(modelItem => item.GiaBan)
+                    </td>
+                    <td style="width:162px">
+                        @Html.DisplayFor(modelItem => item.SoLuong)
+                    </td>
+                    <td style="width:450px;">
+                        <p style="display: -webkit-box; -webkit-box-orient: vertical; height: 75px; width: 400px; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 3; color: black ">@Html.DisplayFor(modelItem => item.MoTa)</p>
+                    </td>
+                    <td style="width:162px">
+
+                        <p style="border:groove;border-radius:5px;width:70px;margin-left:35px">@Html.ActionLink("Sửa", "Edit", new { id = item.MaAnh })</p>
+
+                        <p style="border: groove; border-radius: 5px; width: 70px; margin-left: 35px">@Html.ActionLink("Xóa", "Delete", new { id = item.MaAnh })</p>
+
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+
+
+    }
+    else
+    {
+        <div class="space-name" style="margin-top: 20px; width: 960px; height: auto; text-align: center; font-size: 30px; color: red;">
+            <div class="alert-danger">@ViewBag.Error</div>
+        </div>
+    }
+
+

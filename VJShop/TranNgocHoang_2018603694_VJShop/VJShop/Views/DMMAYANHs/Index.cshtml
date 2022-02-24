@@ -1,0 +1,44 @@
+﻿@model IEnumerable<VJShop.Areas.Admin.Models.DMMAYANH>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    li:hover{
+        background-color:yellow;
+    }
+</style>
+
+
+
+<br />
+<ul style="list-style: none; display: flex;flex-wrap:wrap;margin-left:110px;margin-bottom:200px;">
+
+
+    @foreach (var item in Model)
+    {
+
+
+        <li style="margin:10px;width:200px;border:groove;">
+
+            <a href="@Url.Action("Index","Home",new { id = item.MaDM.Trim() })" style="text-decoration:none">
+                @{
+                    string ImagePath = "~/Content/image/" + item.AnhDaiDien;
+                }
+                <img src="@Url.Content(ImagePath)" width="140" height="100" class="img-thumbnail" style="margin-left:30px;" />
+                <br />
+
+            </a>
+            <a style="text-align:center">
+                <p>Máy ảnh @Html.DisplayFor(modelItem => item.TieuDe)</p>
+            </a>
+
+
+        </li>
+    }
+
+</ul>
+
+        
+
